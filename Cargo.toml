@@ -1,0 +1,80 @@
+[package]
+name = "elektui"
+description = "TUI-based Elektron device manager"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/jschillem/elektui"
+readme = "README.md"
+keywords = ["elektron", "midi", "sysex", "tui"]
+categories = ["command-line-utilities", "multimedia::audio"]
+
+[dependencies]
+# TUI
+ratatui = "0.30"
+crossterm = "0.29"
+
+# MIDI I/O
+midir = "0.10"
+
+# Serialization / Configuration
+serde = { version = "1", features = ["derive"] }
+toml = "1"
+
+# Error handling
+thiserror = "2"
+anyhow = "1"
+
+# Logging
+log = "0.4"
+env_logger = "0.11"
+
+# Text encoding
+encoding_rs = "0.8"
+
+[dev-dependencies]
+proptest = "1" # property-based testing
+insta = "1"    # snapshot testing
+
+# -----------------------
+# Lint Config
+# -----------------------
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_debug_implementations = "warn"
+# missing_docs = "warn"  # uncomment once public items have docs
+unreachable_pub = "warn"
+
+[lints.clippy]
+rust_2018_idioms = { level = "warn", priority = -2 }
+all = { level = "deny", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+cargo = { level = "warn", priority = -1 }
+
+# Pedantic relaxations
+module_name_repetitions = "allow" # protocol::ProtocolError is fine
+must_use_candidate = "allow"      # too noisy early on
+missing_errors_doc = "allow"      # add error docs incrementally
+missing_panics_doc = "allow"
+
+# Cherry-picked lints
+unwrap_used = "warn"
+expect_used = "warn"
+dbg_macro = "warn"
+print_stdout = "warn"
+print_stderr = "warn"
+todo = "warn"
+unimplemented = "warn"
+wildcard_enum_match_arm = "warn"
+
+multiple_crate_versions = "allow"
+
+[profile.dev]
+opt-level = 0
+
+[profile.release]
+codegen-units = 1
+opt-level = 3
+lto = "thin"
+strip = true

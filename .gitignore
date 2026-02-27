@@ -1,0 +1,22 @@
+/target
+**/*.rs.bk
+
+# editors
+.idea/
+*.iml
+.vscode/settings.json
+*.swp
+*.swo
+*~
+.DS_Store
+
+# env
+.env
+.env.local
+
+# coverage reports
+/coverage/
+*.profraw
+*.profdata
+tarpaulin-report.html
+lcov.info
