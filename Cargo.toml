@@ -48,7 +48,6 @@ missing_debug_implementations = "warn"
 unreachable_pub = "warn"
 
 [lints.clippy]
-rust_2018_idioms = { level = "warn", priority = -2 }
 all = { level = "deny", priority = -1 }
 pedantic = { level = "warn", priority = -1 }
 cargo = { level = "warn", priority = -1 }
